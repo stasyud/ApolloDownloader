@@ -83,7 +83,8 @@ public class ParallelBrowser {
             List<Resource> resources = HtmlUtils.getInstance().parsePage(image.getResourceURL(), ParserFactory.IMAGE);
             if (resources != null && resources.size() > 0) {
                 Resource res = resources.get(0);
-                File file = new File(fileLocation + res.getResourceName() + ".jpg");
+                String fileName = fileLocation + res.getResourceName().replaceAll("(\"|'|,|;)","") + ".jpg";
+                File file = new File(fileName);
                 long start = System.currentTimeMillis();
                 FileUtils.copyURLToFile(new URL(res.getImageURL()), file);
                 start = System.currentTimeMillis() - start;
