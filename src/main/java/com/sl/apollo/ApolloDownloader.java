@@ -29,7 +29,7 @@ public class ApolloDownloader {
     }
 
 
-    private static final Map<String, String> albumURLs = new HashMap<String, String>() {{
+    private static final Map<String, String> ALBUM_URL_MAP = new HashMap<String, String>() {{
         put("70mm Hasselblad", "http://www.lpi.usra.edu/resources/apollo/catalog/70mm/");
 //        put("Mapping (Metric)", "http://www.lpi.usra.edu/resources/apollo/catalog/metric/");
 //        put("Panoramic", "http://www.lpi.usra.edu/resources/apollo/catalog/pan/");
@@ -48,9 +48,9 @@ public class ApolloDownloader {
 
     public void startProcessing() {
         HtmlUtils utils = HtmlUtils.getInstance();
-        Map<String, List<Resource>> albumsMap = new HashMap<>(albumURLs.size());
-        for (String key : albumURLs.keySet()) {
-            String url = albumURLs.get(key);
+        Map<String, List<Resource>> albumsMap = new HashMap<>(ALBUM_URL_MAP.size());
+        for (String key : ALBUM_URL_MAP.keySet()) {
+            String url = ALBUM_URL_MAP.get(key);
             albumsMap.put(key, utils.parsePage(url, ALBUM));
         }
         for (String key : albumsMap.keySet()) {

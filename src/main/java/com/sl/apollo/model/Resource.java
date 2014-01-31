@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * POJO class for keeping and passing information within the system
  * User: SYudenkov
  * Date: 29.01.14
- * Time: 11:20
  */
 public class Resource {
     private String resourceURL;

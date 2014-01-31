@@ -49,9 +49,8 @@ public class ParallelBrowser {
                 tasks.add(es.submit(new CallableBrowser(resource, magazine, album)));
             }
             for (Future<Resource> task : tasks) {
-                Resource res = null;
                 try {
-                    res = task.get(downloadTimeout, TimeUnit.SECONDS);
+                    task.get(downloadTimeout, TimeUnit.SECONDS);
                 } catch (ExecutionException e) {
                     log.error("Error browsing for mLink: mURL: " + magazine.getResourceURL() + "; album : " + album.getResourceURL(), e);
                 } catch (InterruptedException ie) {
@@ -132,7 +131,7 @@ public class ParallelBrowser {
      */
     public static void delete(File file) throws IOException {
         if (file.isDirectory()) {
-            //directory is empty, then delete it
+            //check whether directory is empty, then delete it
             if (file.list().length == 0) {
                 file.delete();
                 log.info("Directory was deleted : " + file.getAbsolutePath());
@@ -152,7 +151,7 @@ public class ParallelBrowser {
                 }
             }
         } else {
-            //if file, then delete it
+            //if given file is a plain file - delete it
             file.delete();
             log.info("File was deleted : " + file.getAbsolutePath());
         }

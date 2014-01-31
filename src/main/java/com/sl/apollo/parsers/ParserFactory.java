@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Factory that is used for getting certain instances of parsers depending on a parserType parameter
  * User: SYudenkov
  * Date: 30.01.14
- * Time: 18:49
  */
 public class ParserFactory {
     public static final int ALBUM = 1;
